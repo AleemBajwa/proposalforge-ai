@@ -2,9 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Manifest V3](https://img.shields.io/badge/Chrome%20Extension-Manifest%20V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Upwork Compatibility](https://img.shields.io/badge/Platform-Upwork™-14a800.svg)](https://upwork.com)
+[![Gumroad](https://img.shields.io/badge/Gumroad-Buy%20License%20$2.99-pink.svg)](https://aleemice.gumroad.com/l/proposalforge-ai)
+[![Whop Store](https://img.shields.io/badge/Whop-Aleemice%20Store-orange.svg)](https://whop.com/aleemice/proposalforge-pro)
 [![Privacy First](https://img.shields.io/badge/Privacy-100%25%20Local-emerald.svg)](#privacy--security)
-[![Whop Store](https://img.shields.io/badge/Whop-Aleemice%20Store-orange.svg)](https://whop.com/aleemice)
 
 > **Generate tailored, high-converting Upwork proposals in 3 seconds. Ingests live job scope, stacks, and budgets right from your browser view. 1-click auto-fill into Upwork's cover letter editor. $0 API latency, 100% private.**
 
