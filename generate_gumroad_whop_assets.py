@@ -55,7 +55,7 @@ def generate_cover():
 
     # Price box
     draw.rounded_rectangle([100, 520, 520, 595], radius=14, fill=(16, 185, 129, 255))
-    draw.text((130, 542), "Launch Special: $4.99 (Save 80%)", fill=(10, 14, 23, 255), font=get_font(22))
+    draw.text((130, 542), "Launch Special: $2.99 (Save 85%)", fill=(10, 14, 23, 255), font=get_font(22))
 
     # Right side preview box
     draw.rounded_rectangle([750, 120, 1180, 600], radius=16, fill=(10, 14, 23, 255), outline=(16, 185, 129, 255), width=2)
@@ -99,7 +99,7 @@ def generate_thumbnail():
 
     # Pill badge
     draw.rounded_rectangle([150, 450, 450, 515], radius=16, fill=(16, 185, 129, 255))
-    draw.text((185, 470), "⚡ $4.99 EARLY BIRD", fill=(10, 14, 23, 255), font=get_font(22))
+    draw.text((185, 470), "⚡ $2.99 EARLY BIRD", fill=(10, 14, 23, 255), font=get_font(22))
 
     thumb_path = os.path.join(output_dir, "thumbnail_600x600.png")
     img.save(thumb_path)
