@@ -277,7 +277,10 @@
 
   <!-- Job Preview Card -->
   <div class="job-card">
-    <div class="job-title" id="jobTitleDisplay">Detecting Upwork Job...</div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+      <div class="job-title" id="jobTitleDisplay" style="margin-bottom: 0;">Detecting Upwork Job...</div>
+      <button id="loadDemoBtn" title="Test with a realistic sample Upwork job" style="background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent-green); color: var(--accent-green); border-radius: 4px; font-size: 10px; font-weight: 700; padding: 2px 7px; cursor: pointer; flex-shrink: 0; margin-left: 6px;">🧪 Demo Job</button>
+    </div>
     <div class="job-meta">
       <span id="jobBudgetDisplay">Budget: -</span> • <span id="jobLocationDisplay">Location: -</span>
     </div>

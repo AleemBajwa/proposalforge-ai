@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upwork Job Post Simulation & ProposalForge Test Harness</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f2f7f2;
+      color: #001e00;
+      margin: 0;
+      padding: 30px 20px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #d5e0d5;
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e4ebe4;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .upwork-logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #14a800;
+      letter-spacing: -0.5px;
+    }
+
+    .tag-live {
+      background: #e9f7eb;
+      color: #14a800;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid #b7e4bd;
+    }
+
+    h1.job-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #001e00;
+      margin-bottom: 12px;
+    }
+
+    .job-meta-row {
+      display: flex;
+      gap: 20px;
+      color: #5e6d55;
+      font-size: 14px;
+      margin-bottom: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .meta-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .badge-money {
+      color: #14a800;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .job-description-box {
+      font-size: 15px;
+      color: #1f381f;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      border-bottom: 1px solid #e4ebe4;
+      padding-bottom: 24px;
+    }
+
+    .skills-header {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .skill-badge {
+      background: #f2f7f2;
+      border: 1px solid #d5e0d5;
+      color: #001e00;
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #001e00;
+    }
+
+    .cover-letter-section {
+      background: #f9fbf9;
+      border: 1px solid #d5e0d5;
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 30px;
+    }
+
+    .cover-letter-label {
+      font-weight: 700;
+      font-size: 15px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .cover-letter-desc {
+      font-size: 13px;
+      color: #5e6d55;
+      margin-bottom: 14px;
+    }
+
+    textarea.up-textarea {
+      width: 100%;
+      height: 240px;
+      border: 1.5px solid #b7c7b7;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 14px;
+      font-family: inherit;
+      line-height: 1.5;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #ffffff;
+    }
+
+    textarea.up-textarea:focus {
+      border-color: #14a800;
+      box-shadow: 0 0 0 3px rgba(20, 168, 0, 0.15);
+    }
+
+    .client-sidebar {
+      background: #f9fbf9;
+      border: 1px solid #e4ebe4;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .test-banner {
+      background: #10b981;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="test-banner">
+      <div>🧪 <strong>ProposalForge AI Local Test Harness</strong> — Simulating an authentic Upwork Job & Proposal page.</div>
+      <div style="font-size: 12px; background: rgba(0,0,0,0.2); padding: 4px 8px; border-radius: 4px;">Notice the floating green pill in bottom-right ↘️</div>
+    </div>
+
+    <div class="header-bar">
+      <div class="upwork-logo">Upwork™ <span style="font-size: 13px; color: #5e6d55; font-weight: 500;">(Simulated View)</span></div>
+      <span class="tag-live">● Public Job Posting</span>
+    </div>
+
+    <!-- Active Job Title (with Upwork selector) -->
+    <header>
+      <h2 data-qa="job-title" class="job-title">Full-Stack React & Node.js Developer to Build SaaS MVP</h2>
+    </header>
+
+    <!-- Meta Details (with Upwork selectors) -->
+    <div class="job-meta-row">
+      <div class="meta-badge">
+        <span>💰</span>
+        <span class="badge-money" data-qa="job-budget" data-qa="client-budget">$2,800 Fixed Price</span>
+      </div>
+      <div class="meta-badge">
+        <span>⏱️</span>
+        <span>Est. Time: 1 to 3 months</span>
+      </div>
+      <div class="meta-badge">
+        <span>⭐</span>
+        <span>Expert Level Requested</span>
+      </div>
+    </div>
+
+    <!-- Client Info Bar -->
+    <div class="client-sidebar">
+      <div>
+        <strong>Client Information:</strong>
+        <span data-qa="client-country" data-qa="client-location" style="margin-left: 6px;">Austin, Texas, United States</span>
+      </div>
+      <div>
+        <strong>Payment Verified:</strong>
+        <span data-qa="client-spend" style="color: #14a800; font-weight: 700; margin-left: 6px;">$94,000+ Total Spent (4.95 ★)</span>
+      </div>
+    </div>
+
+    <!-- Description (with Upwork selector) -->
+    <div class="section-title">Job Description</div>
+    <div class="job-description-box" data-qa="job-description">
+      We are looking for an experienced full-stack developer to build out our initial SaaS customer management MVP.
+      The project requires implementing a responsive dashboard in React with Tailwind CSS, backed by Node.js/Express and PostgreSQL.
+      We need clean authentication (Supabase or JWT), stripe billing integration, and high test coverage.
+      Code must be fully documented with clear git commit history. We want someone proactive who communicates daily and delivers with zero bloat.
+    </div>
+
+    <!-- Skills List (with Upwork selectors) -->
+    <div class="skills-header">Skills and Expertise</div>
+    <div class="skills-list">
+      <span class="skill-badge" data-qa="skill">React</span>
+      <span class="skill-badge" data-qa="skill">Node.js</span>
+      <span class="skill-badge" data-qa="skill">PostgreSQL</span>
+      <span class="skill-badge" data-qa="skill">Tailwind CSS</span>
+      <span class="skill-badge" data-qa="skill">REST APIs</span>
+      <span class="skill-badge" data-qa="skill">Stripe API</span>
+    </div>
+
+    <!-- Proposal Submission Form -->
+    <div class="cover-letter-section">
+      <label class="cover-letter-label" for="coverLetterInput">Cover Letter (Upwork Proposal)</label>
+      <div class="cover-letter-desc">Introduce yourself and explain why you're a strong fit for this job. Use ProposalForge to auto-fill this area!</div>
+      <textarea id="coverLetterInput" class="up-textarea" data-qa="cover-letter-text" aria-labelledby="cover_letter" placeholder="Click '⚡ ProposalForge AI' in the bottom-right corner, then click '✍️ Auto-Fill Cover Letter' to test instant insertion..."></textarea>
+    </div>
+
+  </div>
+
+  <!-- Polyfill chrome.storage for local standalone testing if running outside extension wrapper -->
+  <script>
+    if (!window.chrome || !window.chrome.storage) {
+      window.chrome = window.chrome || {};
+      window.chrome.storage = {
+        local: {
+          get: (keys, cb) => {
+            const res = {
+              userProfile: {
+                name: "Alex Rivera",
+                title: "Senior Full-Stack Engineer",
+                experienceYears: 6,
+                portfolioUrl: "https://github.com/alexrivera-dev"
+              },
+              selectedTone: "authority",
+              isPro: true
+            };
+            if (cb) cb(res);
+            return Promise.resolve(res);
+          },
+          set: (obj, cb) => {
+            if (cb) cb();
+            return Promise.resolve();
+          }
+        }
+      };
+      window.chrome.runtime = window.chrome.runtime || {
+        onMessage: { addListener: () => {} }
+      };
+    }
+  </script>
+
+  <!-- Inject the real ProposalForge script directly -->
+  <script src="content/upwork_injector.js"></script>
+
+</body>
+</html>

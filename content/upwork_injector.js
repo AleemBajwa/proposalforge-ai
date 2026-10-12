@@ -15,42 +15,52 @@ function extractJobDetailsFromPage() {
   let clientSpend = "";
   let screeningQuestions = [];
 
+  // Check if active slider drawer or dialog exists
+  const activeContainer =
+    document.querySelector(".air3-slider:not([aria-hidden='true']), .air3-slider-content, .up-slider, [role='dialog'], [data-qa='job-details']") ||
+    document;
+
   // 1. Job Title
   const titleEl =
-    document.querySelector("header h2, h4.job-title, [data-qa='job-title'], h1.m-0-bottom, .up-card-header h2") ||
-    document.querySelector("h1, h2");
+    activeContainer.querySelector("header h2, h4.job-title, [data-qa='job-title'], h1.m-0-bottom, .up-card-header h2, h2.air3-card-title, h1") ||
+    document.querySelector("header h2, [data-qa='job-title'], h1, h2");
   if (titleEl) title = cleanText(titleEl.innerText);
 
   // 2. Job Description
   const descEl =
-    document.querySelector("[data-qa='job-description'], .job-description, .break-word, .up-line-clamp-v2") ||
-    document.querySelector("div.text-body-sm");
+    activeContainer.querySelector("[data-qa='job-description'], .job-description, .air3-line-clamp, [data-test='job-description'], .break-word, .up-line-clamp-v2") ||
+    document.querySelector("[data-qa='job-description'], .job-description, .air3-line-clamp, .up-line-clamp-v2, div.text-body-sm");
   if (descEl) description = cleanText(descEl.innerText);
 
   // 3. Budget / Rate
   const budgetEl =
-    document.querySelector("[data-qa='client-budget'], [data-qa='job-budget'], .payment-status, [data-qa='fixed-price']") ||
-    Array.from(document.querySelectorAll("strong, span")).find((el) => /^\$\d+/.test(el.innerText?.trim()));
+    activeContainer.querySelector("[data-qa='client-budget'], [data-qa='job-budget'], [data-test='budget'], .payment-status, [data-qa='fixed-price']") ||
+    document.querySelector("[data-qa='client-budget'], [data-qa='job-budget'], [data-test='budget'], .payment-status, [data-qa='fixed-price']") ||
+    Array.from(activeContainer.querySelectorAll("strong, span, li")).find((el) => /^\$\d+/.test(el.innerText?.trim()));
   if (budgetEl) budget = cleanText(budgetEl.innerText);
 
   // 4. Skills
-  const skillEls = document.querySelectorAll("[data-qa='skill'], .skill-badge, .up-skill-badge, a[href*='/freelance-jobs/']");
+  const skillEls = activeContainer.querySelectorAll("[data-qa='skill'], .air3-token, .skill-badge, .up-skill-badge, [data-test='skill-link'], a[href*='/freelance-jobs/']");
   skillEls.forEach((s) => {
     const txt = cleanText(s.innerText);
-    if (txt && txt.length > 1 && !skills.includes(txt)) {
+    if (txt && txt.length > 1 && txt.length < 40 && !skills.includes(txt)) {
       skills.push(txt);
     }
   });
 
   // 5. Client Info
-  const spendEl = document.querySelector("[data-qa='client-spend'], [data-qa='total-spent']");
+  const spendEl =
+    activeContainer.querySelector("[data-qa='client-spend'], [data-qa='total-spent'], [data-test='client-spend']") ||
+    document.querySelector("[data-qa='client-spend'], [data-qa='total-spent']");
   if (spendEl) clientSpend = cleanText(spendEl.innerText);
 
-  const locEl = document.querySelector("[data-qa='client-location'], [data-qa='client-country']");
+  const locEl =
+    activeContainer.querySelector("[data-qa='client-location'], [data-qa='client-country'], [data-test='client-country']") ||
+    document.querySelector("[data-qa='client-location'], [data-qa='client-country']");
   if (locEl) clientLocation = cleanText(locEl.innerText);
 
   // 6. Screening Questions
-  const questionLabels = document.querySelectorAll("label[for*='question'], .question-label, [data-qa='question']");
+  const questionLabels = activeContainer.querySelectorAll("label[for*='question'], .question-label, [data-qa='question']");
   questionLabels.forEach((q) => {
     const qText = cleanText(q.innerText);
     if (qText && qText.length > 5) screeningQuestions.push(qText);
@@ -263,9 +273,18 @@ function injectOnPagePill() {
   document.body.appendChild(pill);
 }
 
-// Initialize pill on page load
-if (window.location.href.includes("upwork.com")) {
+// Initialize and maintain pill across SPA navigation & local test harness
+if (
+  window.location.href.includes("upwork.com") ||
+  window.location.href.includes("test_upwork_page") ||
+  window.location.href.includes("localhost")
+) {
   injectOnPagePill();
+  setInterval(() => {
+    if (!document.getElementById("proposalforge-pill")) {
+      injectOnPagePill();
+    }
+  }, 1500);
 }
 
 // Message Listener

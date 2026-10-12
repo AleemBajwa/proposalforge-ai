@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const planBadge = document.getElementById("planBadge");
   const toneBtns = document.querySelectorAll(".tone-btn");
+  const loadDemoBtn = document.getElementById("loadDemoBtn");
 
   const toggleProfileBtn = document.getElementById("toggleProfileBtn");
   const profileModal = document.getElementById("profileModal");
@@ -85,6 +86,36 @@ document.addEventListener("DOMContentLoaded", async () => {
   } else {
     jobTitleDisplay.textContent = "Open an Upwork job tab to begin";
     jobBudgetDisplay.textContent = "Browse jobs on Upwork";
+  }
+
+  // Demo Jobs for Instant Testing
+  const demoJobs = [
+    {
+      title: "Senior Full-Stack Developer for SaaS MVP (React & Node.js)",
+      description: "We are looking for a reliable full-stack developer to help build and launch our SaaS customer portal. Must have clean architecture, API integration experience, and ability to deliver within 3 weeks.",
+      budget: "$3,500 Fixed Price",
+      clientLocation: "United States (Verified)",
+      clientSpend: "$65k+ spent (4.9★)",
+      skills: ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "REST APIs"]
+    },
+    {
+      title: "Python Automation Specialist to Build Data Pipelines",
+      description: "Seeking an experienced Python engineer to automate public data extraction and sync to our internal PostgreSQL database. Needs robust error handling and proxy rotation.",
+      budget: "$65/hr (20-30 hrs/wk)",
+      clientLocation: "United Kingdom (Verified)",
+      clientSpend: "$120k+ spent (5.0★)",
+      skills: ["Python", "FastAPI", "Web Scraping", "PostgreSQL", "Docker"]
+    }
+  ];
+  let demoIdx = 0;
+
+  if (loadDemoBtn) {
+    loadDemoBtn.addEventListener("click", () => {
+      currentJobData = demoJobs[demoIdx % demoJobs.length];
+      demoIdx++;
+      renderJobPreview(currentJobData);
+      generateProposal();
+    });
   }
 
   // Tone selector
