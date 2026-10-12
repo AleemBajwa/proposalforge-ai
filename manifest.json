@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ProposalForge: AI Proposal Writer for Upwork™",
   "version": "1.0.0",
-  "description": "Generate winning, tailored proposals for Upwork jobs in 3 seconds. Instant cover letter writer, screening question assistant & auto-fill.",
+  "description": "Generate winning, tailored proposals for Upwork jobs in 3 seconds. Instant cover letter writer & 1-click auto-fill.",
   "permissions": [
     "activeTab",
     "storage",
