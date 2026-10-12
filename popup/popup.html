@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ProposalForge for Upwork</title>
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-card: #131c2e;
+      --bg-input: #1c2840;
+      --text-main: #f0f4f8;
+      --text-muted: #94a3b8;
+      --accent-green: #10b981;
+      --accent-cyan: #00d2ff;
+      --accent-gold: #f59e0b;
+      --border-color: #243552;
+      --radius: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      width: 380px;
+      background: var(--bg-primary);
+      color: var(--text-main);
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #059669, #10b981);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+      font-size: 13px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .brand-title span {
+      color: var(--accent-green);
+    }
+
+    .plan-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    .plan-badge.pro {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    /* Job Card Preview */
+    .job-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .job-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--accent-green);
+      margin-bottom: 6px;
+    }
+
+    .job-skills {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Tone Selector */
+    .tone-selector {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tone-btn {
+      flex: 1;
+      padding: 6px 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .tone-btn.active {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-green);
+      color: var(--accent-green);
+    }
+
+    /* Action button */
+    .btn-generate {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .btn-generate:hover {
+      opacity: 0.95;
+    }
+
+    /* Output Area */
+    .output-card {
+      margin-bottom: 12px;
+    }
+
+    .output-text {
+      width: 100%;
+      height: 180px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      color: #fff;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 1.45;
+      resize: vertical;
+      outline: none;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+
+    .btn-copy {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: #fff;
+    }
+
+    .btn-autofill {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+    }
+
+    /* Footer & Profile settings */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    .link {
+      color: var(--accent-green);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Settings Modal */
+    .modal {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .modal-title {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .input-field {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-bottom: 6px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-title">ProposalForge <span>AI</span></div>
+    </div>
+    <div class="plan-badge" id="planBadge">FREE TIER</div>
+  </div>
+
+  <!-- Job Preview Card -->
+  <div class="job-card">
+    <div class="job-title" id="jobTitleDisplay">Detecting Upwork Job...</div>
+    <div class="job-meta">
+      <span id="jobBudgetDisplay">Budget: -</span> • <span id="jobLocationDisplay">Location: -</span>
+    </div>
+    <div class="job-skills" id="jobSkillsDisplay">Skills: -</div>
+  </div>
+
+  <!-- Tone Selector -->
+  <div class="tone-selector">
+    <button class="tone-btn active" data-tone="authority">🏆 Authority</button>
+    <button class="tone-btn" data-tone="direct">⚡ Direct & Fast</button>
+    <button class="tone-btn" data-tone="technical">💻 Technical</button>
+  </div>
+
+  <!-- Generate Button -->
+  <button class="btn-generate" id="generateBtn">
+    ⚡ Generate Tailored Proposal
+  </button>
+
+  <!-- Output Area -->
+  <div class="output-card">
+    <textarea class="output-text" id="proposalOutput" placeholder="Your tailored, high-converting proposal will appear here..."></textarea>
+    <div class="btn-group">
+      <button class="btn-action btn-copy" id="copyBtn">📋 Copy Proposal</button>
+      <button class="btn-action btn-autofill" id="autofillBtn">✍️ Auto-Fill Cover Letter</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="link" id="toggleProfileBtn">⚙️ Edit Profile Presets</span>
+    <span class="link" id="toggleLicenseBtn">🔑 Enter License</span>
+  </div>
+
+  <!-- Profile Settings Modal -->
+  <div class="modal" id="profileModal">
+    <div class="modal-title">Your Freelancer Profile Settings</div>
+    <input type="text" id="profName" class="input-field" placeholder="Your Full Name (e.g. Alex Rivera)">
+    <input type="text" id="profTitle" class="input-field" placeholder="Professional Title (e.g. Senior Full-Stack Engineer)">
+    <input type="number" id="profYears" class="input-field" placeholder="Years of Experience (e.g. 6)">
+    <input type="text" id="profPortfolio" class="input-field" placeholder="Portfolio / GitHub Link (optional)">
+    <button class="btn-generate" id="saveProfileBtn" style="padding: 6px; font-size: 11px; margin-bottom: 0;">Save Profile</button>
+  </div>
+
+  <!-- License Modal -->
+  <div class="modal" id="licenseModal">
+    <div class="modal-title" style="color: var(--accent-gold);">Activate Pro Unlimited</div>
+    <input type="text" id="licenseKeyInput" class="input-field" placeholder="Paste Whop License Key...">
+    <div class="btn-group">
+      <button class="btn-action btn-autofill" id="activateLicenseBtn" style="background: var(--accent-gold); color: #000;">Activate</button>
+      <a href="https://whop.com/aleemice" target="_blank" class="btn-action btn-copy" style="text-decoration: none;">Get Key ($4.99)</a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

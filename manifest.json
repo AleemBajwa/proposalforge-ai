@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ProposalForge: AI Proposal Writer for Upwork™",
+  "version": "1.0.0",
+  "description": "Generate winning, tailored proposals for Upwork jobs in 3 seconds. Instant cover letter writer, screening question assistant & auto-fill.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.upwork.com/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "ProposalForge for Upwork",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background/service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.upwork.com/*"],
+      "js": ["content/upwork_injector.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
