@@ -1,6 +1,7 @@
 # ⚡ ProposalForge AI: High-Converting Upwork Proposal Writer
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Live%20on%20Store-4285F4.svg)](https://chromewebstore.google.com/detail/hjikpbhnifangimjhbiogkeogolobfjd)
 [![Manifest V3](https://img.shields.io/badge/Chrome%20Extension-Manifest%20V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![Gumroad](https://img.shields.io/badge/Gumroad-Buy%20License%20$2.99-pink.svg)](https://aleemice.gumroad.com/l/proposalforge-ai)
 [![Whop Store](https://img.shields.io/badge/Whop-Aleemice%20Store-orange.svg)](https://whop.com/aleemice/proposalforge-pro)
@@ -65,7 +66,13 @@ flowchart LR
 
 ## 📦 Installation Guide
 
-### Option 1: Chrome Developer Mode (Manual Unpacked)
+### Option 1: Chrome Web Store (1-Click Install — Recommended)
+Install directly from the official store:  
+👉 **[Add to Chrome (Official Store)](https://chromewebstore.google.com/detail/hjikpbhnifangimjhbiogkeogolobfjd)**
+
+---
+
+### Option 2: Chrome / Edge Developer Mode (Manual Unpacked)
 1. Clone or download this repository:
    ```bash
    git clone https://github.com/AleemBajwa/proposalforge-ai.git
